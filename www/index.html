@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>UV-Index</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="uv.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="sun" role="button">&#x2600;</div>
+        <div id="refresh" role="button">&#8634;</div>
+        <div id="uv-box">
+            <h1>Don't Burn!</h1>
+            <hr>
+            <h2>The current UV index is:</h2>
+            <div id="uv">
+                <div id="loader" class="spinner"></div>
+                <p id="uv-text" style="display: none;">Loading...</p>
+            </div>
+        </div>
+
+        <div id="tips-box" style="display: none">
+            <div id="outer-box">
+                <h2>Skin Safety Tips</h2>
+                <h3 id="current-tip">Loading tip...</h3>
+                <ul id="tips-list"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
