@@ -56,7 +56,7 @@ function getUVI() {
 
         console.time('fetch-uv');
         const baseUrl = window.location.hostname === 'localhost'
-            ? 'https://your-vercel-project.vercel.app' // running in the Android app
+            ? 'https://uv-index-checker.vercel.app' // running in the Android app
             : ''; // running in the browser on Vercel
 
         fetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, {
