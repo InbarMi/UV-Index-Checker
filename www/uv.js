@@ -55,14 +55,14 @@ function getUVI() {
         const timeoutId = setTimeout(() => controller.abort(), 8000);
 
         console.time('fetch-uv');
-        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${long}&appid=${apikey}`, {
+        fetch(`../api/uv?lat=${lat}&lon=${long}`, {
             signal: controller.signal
         })
         .then(res => res.json())
         .then(data => {
             console.timeEnd('fetch-uv');
             clearTimeout(timeoutId);
-            const uvindex = data.current?.uvi ?? null;
+            const uvindex = data.uvIndex ?? null;
             if (uvindex !== null) {
                 updateDisplay(uvindex);
             } else {
