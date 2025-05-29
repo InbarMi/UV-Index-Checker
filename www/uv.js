@@ -1,6 +1,6 @@
+/* document elements */
 const container = document.getElementById("container");
 const uvbox = document.getElementById("uv-box");
-const uvtext = document.getElementById("uv");
 const tip = document.getElementById("current-tip");
 const tipbox = document.getElementById("tips-box");
 const sunIcon = document.getElementById("sun");
@@ -41,6 +41,10 @@ function populateTips() {
     });
 }
 
+/**
+ * Fetches the current UV index based on the user's geolocation.
+ * Calls a backend API that handles the weather API key securely.
+ */
 function getUVI() {
     loader.style.display = 'block';
     uvTextElem.style.display = 'none';
@@ -90,12 +94,19 @@ function getUVI() {
     });
 }
 
+/**
+ * Displays error on the page
+ */
 function displayError(message) {
     loader.style.display = 'none';
     uvTextElem.style.display = 'block';
     uvTextElem.innerText = message;
 }
 
+/**
+ * Displays the UV index with appropriate
+ * color background based on the UV level
+ */
 function updateDisplay(uvi) {
     loader.style.display = 'none';
     uvTextElem.style.display = 'block';
@@ -126,6 +137,12 @@ function updateDisplay(uvi) {
     }
 }
 
+/**
+ * Requests permission to access the user's geolocation.
+ * Returns:
+ * - true if permission is already granted or granted after prompting
+ * - false if permission is denied or an error occurs
+ */
 async function requestLocationPermission() {
     try {
         const status = await navigator.permissions.query({ name: 'geolocation' });
@@ -148,6 +165,10 @@ async function requestLocationPermission() {
     }
 }
 
+/**
+ * Requests loccation permission and if granted
+ * Gets the UVI, re-fetching the data every 10 minutes
+ */
 async function init() {
     const granted = await requestLocationPermission();
     if (granted) {

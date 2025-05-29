@@ -1,3 +1,18 @@
+/**
+ * API route handler for retrieving the current UV index based on geographic coordinates.
+ *
+ * Query parameters:
+ * - `lat`: Latitude
+ * - `lon`: Longitude
+ *
+ * Returns:
+ * - 200 OK with JSON: { uvIndex: number } if successful
+ * - 400 Bad Request if parameters are missing
+ * - 500 Internal Server Error if the external weather API call fails
+ *
+ * Uses OpenWeatherMap One Call API (v3.0) and secures the API key via an environment variable (`WEATHER_KEY`).
+ * Adds CORS headers to allow access from frontend applications.
+ */
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
