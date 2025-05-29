@@ -1,6 +1,6 @@
 # SunSmart ☀️
 
-A super simple mobile app that shows the current UV index based on your location. This app is built with HTML, CSS, and JavaScript, and wrapped as an Android app using Capacitor. It can also run directly in the browser (hosted on Vercel).
+This is a simple mobile app that shows the current UV index based on your location. This app is built with HTML, CSS, and JavaScript, and wrapped as an Android app using Capacitor. It can also run directly in the browser (hosted on Vercel). This was created as a mini learning project to explore geolocation, API integration, and mobile packaging.
 
 ## Features
 - Automatically detects your location and fetches the UV index
