@@ -67,19 +67,13 @@ function getUVI() {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
 
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-        console.time('fetch-uv');
         const baseUrl = window.location.hostname === 'localhost'
             ? 'https://uv-index-checker.vercel.app' // running in the Android app
             : ''; // running in the browser on Vercel
 
-        timeoutFetch(fetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, 8000)
+        timeoutFetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, 10000)
             .then(res => res.json())
             .then(data => {
-                console.timeEnd('fetch-uv');
-                clearTimeout(timeoutId);
                 const uvindex = data.uvIndex ?? null;
                 if (uvindex !== null) {
                     updateDisplay(uvindex);
@@ -88,15 +82,13 @@ function getUVI() {
                 }
             })
             .catch(error => {
-                console.timeEnd('fetch-uv');
-                clearTimeout(timeoutId);
                 console.error('Error fetching UV:', error);
                 if (error.name === 'AbortError') {
                     displayError('Request timed out.');
                 } else {
                     displayError('Failed to load uv index.');
                 }
-            }));
+            });
     }, () => {
         displayError('Geolocation permission denied.');
     }, {
