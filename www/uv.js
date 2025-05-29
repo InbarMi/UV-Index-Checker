@@ -55,7 +55,11 @@ function getUVI() {
         const timeoutId = setTimeout(() => controller.abort(), 8000);
 
         console.time('fetch-uv');
-        fetch(`../api/uv?lat=${lat}&lon=${long}`, {
+        const baseUrl = window.location.hostname === 'localhost'
+            ? 'https://your-vercel-project.vercel.app' // running in the Android app
+            : ''; // running in the browser on Vercel
+
+        fetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, {
             signal: controller.signal
         })
         .then(res => res.json())
