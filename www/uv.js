@@ -17,8 +17,6 @@ const tips = [
     "Drink plenty of water."
 ];
 
-const apikey = '11f07eeb7787a79527da482fe53a0da3';
-
 // refresh page on click
 refresh.addEventListener("click", () => {
     location.reload();
