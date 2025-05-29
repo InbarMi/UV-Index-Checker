@@ -8,6 +8,8 @@ const tipList = document.getElementById("tips-list");
 const refresh = document.getElementById("refresh");
 const loader = document.getElementById("loader");
 const uvTextElem = document.getElementById("uv-text");
+const uvMessage = document.getElementById("uv-message");
+const pageTitle = document.getElementById("page-title");
 
 const tips = [
     "Wear broad-spectrum sunscreen with at least SPF 30.",
@@ -115,25 +117,30 @@ function updateDisplay(uvi) {
     uvbox.style.color = 'white';
 
     if (uvi <= 2.5) {
+        pageTitle.innerText = 'All Clear!'
         container.style.backgroundColor = "#32a852";
-        uvTextElem.innerText += ' (Low)';
         tip.innerText = 'Estimated time to burn: 60+ minutes';
+        uvMessage.innerText = 'Minimal risk. Sunscreen optional.';
     } else if (uvi <= 5.5) {
+        pageTitle.innerText = 'Moderate Risk'
         container.style.backgroundColor = "#dedb33";
-        uvTextElem.innerText += ' (Moderate)';
         tip.innerText = 'Estimated time to burn: 30–45 minutes';
+        uvMessage.innerText = 'Wear sunscreen, hat, and sunglasses.';
     } else if (uvi <= 7.5) {
+        pageTitle.innerText = 'High Risk';
         container.style.backgroundColor = "#de8633";
-        uvTextElem.innerText += ' (High)';
         tip.innerText = 'Estimated time to burn: 20–30 minutes';
+        uvMessage.innerText = 'Limit sun exposure midday. Cover up.';
     } else if (uvi <= 10.5) {
+        pageTitle.innerText = 'Very High Risk';
         container.style.backgroundColor = "#de3333";
-        uvTextElem.innerText += ' (Very High)';
         tip.innerText = 'Estimated time to burn: 10–20 minutes';
+        uvMessage.innerText = 'Use SPF 30+, reapply often. Stay in shade.';
     } else {
+        pageTitle.innerText = 'Extreme UV';
         container.style.backgroundColor = "#bb23cf";
-        uvTextElem.innerText += ' (Extreme)';
         tip.innerText = 'Estimated time to burn: <10 minutes';
+        uvMessage.innerText = 'Avoid direct sun exposure. Full protection needed.';
     }
 }
 
