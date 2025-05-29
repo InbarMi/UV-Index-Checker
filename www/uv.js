@@ -44,6 +44,18 @@ function populateTips() {
 }
 
 /**
+ * Timeout wrapper for a fetch request
+ */
+function timeoutFetch(url, timeout) {
+    return Promise.race([
+        fetch(url),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Request timed out')), timeout)
+        )
+    ]);
+}
+
+/**
  * Fetches the current UV index based on the user's geolocation.
  * Calls a backend API that handles the weather API key securely.
  */
@@ -63,30 +75,28 @@ function getUVI() {
             ? 'https://uv-index-checker.vercel.app' // running in the Android app
             : ''; // running in the browser on Vercel
 
-        fetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, {
-            signal: controller.signal
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.timeEnd('fetch-uv');
-            clearTimeout(timeoutId);
-            const uvindex = data.uvIndex ?? null;
-            if (uvindex !== null) {
-                updateDisplay(uvindex);
-            } else {
-                displayError('UV index not available.');
-            }
-        })
-        .catch(error => {
-            console.timeEnd('fetch-uv');
-            clearTimeout(timeoutId);
-            console.error('Error fetching UV:', error);
-            if (error.name === 'AbortError') {
-                displayError('Request timed out.');
-            } else {
-                displayError('Failed to load uv index.');
-            }
-        });
+        timeoutFetch(fetch(`${baseUrl}/api/uv?lat=${lat}&lon=${long}`, 8000)
+            .then(res => res.json())
+            .then(data => {
+                console.timeEnd('fetch-uv');
+                clearTimeout(timeoutId);
+                const uvindex = data.uvIndex ?? null;
+                if (uvindex !== null) {
+                    updateDisplay(uvindex);
+                } else {
+                    displayError('UV index not available.');
+                }
+            })
+            .catch(error => {
+                console.timeEnd('fetch-uv');
+                clearTimeout(timeoutId);
+                console.error('Error fetching UV:', error);
+                if (error.name === 'AbortError') {
+                    displayError('Request timed out.');
+                } else {
+                    displayError('Failed to load uv index.');
+                }
+            }));
     }, () => {
         displayError('Geolocation permission denied.');
     }, {
