@@ -10,10 +10,10 @@ This is a simple mobile app that shows the current UV index based on your locati
 
 ## App Preview
 <p float="left">
-  <img src="screenshots/low.png" width="200" />
-  <img src="screenshots/moderate.png" width="200" />
-  <img src="screenshots/very-high.png" width="200" />
-  <img src="screenshots/tips.png" width="200" />
+  <img src="screenshots/low.jpg" width="200" />
+  <img src="screenshots/moderate.jpg" width="200" />
+  <img src="screenshots/very-high.jpg" width="200" />
+  <img src="screenshots/tips.jpg" width="200" />
 </p>
 
 ## Running the App
