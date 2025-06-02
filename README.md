@@ -5,8 +5,16 @@ This is a simple mobile app that shows the current UV index based on your locati
 ## Features
 - Automatically detects your location and fetches the UV index
 - Color-coded UV risk levels
-- Personalized safety tips for sun protection
-- Manual refresh
+- Personalized safety tips for sun protection (click sun button)
+- Manual refresh button
+
+## App Preview
+<p float="left">
+  <img src="screenshots/low.png" width="200" />
+  <img src="screenshots/moderate.png" width="200" />
+  <img src="screenshots/very-high.png" width="200" />
+  <img src="screenshots/tips.png" width="200" />
+</p>
 
 ## Running the App
 ### Web Version
