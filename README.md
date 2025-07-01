@@ -10,15 +10,17 @@ This is a simple mobile app that shows the current UV index based on your locati
 
 ## App Preview
 <p float="left">
-  <img src="screenshots/low.jpg" width="200" />
-  <img src="screenshots/moderate.jpg" width="200" />
-  <img src="screenshots/high.jpg" width="200" />
-  <img src="screenshots/very-high.jpg" width="200" />
+  <img src="resources/low.jpg" width="200" />
+  <img src="resources/moderate.jpg" width="200" />
+  <img src="resources/high.jpg" width="200" />
+  <img src="resources/very-high.jpg" width="200" />
 </p>
 
 ## Running the App
 ### Web Version
 You can try the deployed version at [uv-index-checker.vercel.app](https://uv-index-checker.vercel.app/)
+
+!['uv-app-demo'](resources/uv-checker-demo.gif)
 
 ### Android App
 
