@@ -175,7 +175,7 @@ async function requestLocationPermission() {
 }
 
 /**
- * Requests loccation permission and if granted
+ * Requests location permission and if granted
  * Gets the UVI, re-fetching the data every 10 minutes
  */
 async function init() {

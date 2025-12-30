@@ -1,14 +1,20 @@
-# SunSmart ☀️
+# UV Index Checker
+A simple web application that displays the current UV index based on the user's location.
 
-This is a simple mobile app that shows the current UV index based on your location. This app is built with HTML, CSS, and JavaScript, and wrapped as an Android app using Capacitor. It can also run directly in the browser (hosted on Vercel). This was created as a mini learning project to explore geolocation, API integration, and mobile packaging.
+## Learning Focus
+As part of this project, I also briefly explored using Capacitor to package the app as an Android application. This was an experimental exercise to understand how web applications can be adapted for mobile platforms.
 
 ## Features
 - Automatically detects your location and fetches the UV index
 - Color-coded UV risk levels
-- Personalized safety tips for sun protection (click sun button)
+- Personalized safety tips for sun protection (via the sun icon)
 - Manual refresh button
 
+## Project Status
+This project was built as a learning exercise and is no longer actively maintained. The UI and client-side logic remain intact, but the serverless API previously used to fetch live UV data is no longer deployed. As a result, the current version focuses on the frontend implementation and design rather than end-to-end functionality.
+
 ## App Preview
+!['uv-app-demo'](resources/uv-checker-demo.gif)
 <p float="left">
   <img src="resources/low.jpg" width="200" />
   <img src="resources/moderate.jpg" width="200" />
@@ -16,21 +22,4 @@ This is a simple mobile app that shows the current UV index based on your locati
   <img src="resources/very-high.jpg" width="200" />
 </p>
 
-## Running the App
-### Web Version
-You can try the deployed version at [uv-index-checker.vercel.app](https://uv-index-checker.vercel.app/)
 
-!['uv-app-demo'](resources/uv-checker-demo.gif)
-
-### Android App
-
-This app is packaged using Capacitor. To run locally:
-
-> **Note:** You’ll need [Node.js](https://nodejs.org/), [Capacitor](https://capacitorjs.com/docs/getting-started), and [Android Studio](https://developer.android.com/studio) installed.
-
-1. Clone this repository and change to the root project directory
-2. Install dependencies using `npm install`
-3. Add your own OpenWeather API key as a `WEATHER_KEY` environment variable (e.g., in Vercel or using `.env` for local testing)  
-4. Run `npx cap sync` to sync web assets to the native platform  
-5. Open the Android project with `npx cap open android`  
-6. Build and run the app from Android Studio
